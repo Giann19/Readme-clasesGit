@@ -1,101 +1,209 @@
-#CLASE 1
-pwd  #Vemos la ruta de la carpeta en la que estamos
-cd #Es para navegar a una carpeta: change directory -> cambiar de directorio
-cd / #Nos llava al home, en la raíz del disco
-cd ~ #La virgulilla significa que estamos en el lugar de los documentos o del usuario
-ls #Esto es listar los archivos, nos muestra todos los archivos en la raíz
-ls -al #El espacio -al significa que es un argumento especial para ver archivos ocultos
-#Usar la flecha hacía arriba nos muestra el último comando utilizado
-ls -l #Muestra casi todos los archivos sin los que están ocultos
-ls -a #Muestra el grupo de archivos pero no en una lista
-clear #Limpia la consola o ctrl + l
-cd .. #Nos devuelve a la carpeta anterior
-cd U + tab #Esto se usa para un autocompletado o para buscar una referencia
-cd /D #Cambiamos de disco en window
-df -h #Muestra todos los directorios en Ubuntu
-cd /mnt/d #Cambia de directorio usando WSL Ubuntu en window
+# Curso de Git y Terminal
 
+## Clase 1: Comandos básicos de terminal
 
-##AHORA COMENZAMOS CON LA CREACIÓN DE CARPETAS
-cd ..
-cd ..
+```bash
+pwd             # Muestra la ruta actual
+cd              # Cambia de directorio
+cd /            # Va a la raíz del disco
+cd ~            # Va al directorio del usuario
+ls              # Lista archivos en el directorio
+ls -al          # Lista todos los archivos, incluso ocultos
+ls -l           # Lista con detalles
+ls -a           # Lista ocultos sin detalles
+clear           # Limpia la consola (Ctrl + L)
+cd ..           # Subir un nivel
+cd U + tab      # Autocompletado de ruta
+cd /D           # Cambiar de disco en Windows
+```
+
+```bash
+df -h           # Ver espacios de disco (Ubuntu)
+cd /mnt/d       # Acceder a disco desde WSL
+```
+
+### Crear carpetas:
+
+```bash
 cd /mnt/c
-cd ~ #Vamos a la raíz
-mkdir Tecnicatura #Recordar que en window las mayúsculas no tienen relevancia, pero si en Linux
+cd ~
+mkdir Tecnicatura
 cd tecnicatura
-mkdir Python
-mkdir Java
-mkdir JavaScript
+mkdir Python Java JavaScript
+```
 
-#CLASE 2
-touch vacio.txt #Crea un archivo con su extención: ESCRIBIR DENTRO
+## Clase 2: Archivos y comandos
 
-ctrl + s #Guardamos lo que escribimos en el archivo
+```bash
+touch vacio.txt             # Crear archivo vacío
+cat vacio.txt               # Mostrar contenido
+history                     # Ver historial de comandos
+!72                         # Ejecutar comando #72
+rm vacio.txt                # Eliminar archivo
+rm --help                   # Ayuda de rm
+```
 
-./ #Significa la carpeta actual
+## Crear repositorio Git y primer commit
 
-../ #Significa la carpeta anterior
-
-cat vacio.txt #Vemos el contenido del archivo
-
-history #Veremos la historia completa de los comandos que hemos utilizado
-
-!72 + enter #Veremos el comando que utilizamos en ese número
-
-rm vacio.txt #Borra el archivo seleccionado, ¡¡¡¡CUIDADO!!!!
-
-rm --help #Muestra como funciona el comando
-
-
-##CREAR UN REPOSITORIO DE GIT Y HAZ TU PRIMER COMMIT
-
+```bash
 cd tecnicatura
-mkdir class-git
-cd class-git #Entramos en la carpeta que necesitamos trabajar
-git init #Creamos un repositorio en la carpeta central, se crea el archivo .git
-code .  #Abrimos VSC, el punto hace que se abra el archivo en el que estamos situados
-ctrl + n #Creamos un archivo nuevo y escribimos en el, como lo hicimos antes
-ctrl + s #Guardamos poniendo el nombre: historia.txt
-git status #Vemos el estado del proyecto en tiempo real, esta en el área de trabajo
-git add historia.txt #Enviamos el archivo al área de preparación
-git status #Para ver el estado de cambios
-git rm --cached historia.txt #Quitamos el archivo del área de preparación, cached significa que esta en memoria ram
-git config #Tedremos la lista de como funciona la configuración
-git config --list #Configuraciones por defecto, faltan cosas importantes
-git config --list --show-origin #Veremos donde están las configuraciones guardadas
+mkdir class-git && cd class-git
+git init                    # Iniciar repositorio Git
+code .                      # Abrir en VS Code
+ctrl + n / ctrl + s         # Crear y guardar historia.txt
+git status                  # Ver estado
+```
+
+```bash
+git add historia.txt
+# Quitar del staging
+git rm --cached historia.txt
+```
+
+### Configuración inicial
+
+```bash
 git config --global user.name "Ariel Betancud"
-git config --global user.email "betancudariel@gmail.com" #El correo debe ser el mismo que usaremos en GitHub
-git config --list #Ahora veremos que ya están todos los datos completos
-git add . #Ingresamos todos los archivos al área de preparación (ram)
-git commit -m "Mensaje importante del commit" #El primer commit esta hecho
-code . #Hacemos cambios en el archivo y guardamos
-git status #Hay cambios para commitear
-git add .
-git commit -m "Mi segundo commit"
-git log historia.txt #Vemos toda la historia de este archivo, el número largo es el hash del commit
+git config --global user.email "betancudariel@gmail.com"
+git config --list
+```
 
-#CLASE 3
-cd tecnicaturagit #Ingresamos al direcotorio donde están nuestras carpetas de trabajo
-ls #Vemos los archivos y directorios que ya tenemos
-cd git #No hay nada
-cd .. #Salimos
-rm historia.txt #Eliminamos el archivo que habíamos hecho, esto en git bash (window) esto es para practica
-rm Git #rm: cannot remove 'Git': Is a directory
-rm --recursive -R Git #By default, rm does not remove directories.  Use the --recursive (-r or -R) arguments
-option to remove each listed directory, too, along with all of its contents. Esto es para practica
-rm --help #Nos muestra lo que les puse arriba como documentación en Inglés.
-mkdir class-git #Creamos la carpeta o directorio para trabajar en Git local por ahora.
-cd class-git #Entramos para crear el README.md para este sector.
-touch README.md #Vamos a crear un archivo nuevo, md significa markdown y se pueden trabajar con editores de texto, este es un lenguaje que transforma el texto a html.
-Enlace a la documentación en GitHub de MARKDOWN
-Leemos la documentación para ir creando en README.md como lo enseña GitHub.
-code . #Abrimos VSC para editar el archivo.
-Empezamos a cargar lo visto en las clases anteriores (Comandos) en el README y pasamos a commitear
-git status
+### Primeros commits
+
+```bash
 git add .
-git status
+git commit -m "Mensaje importante del commit"
+code .  # Modificamos el archivo
+```
+
+## Clase 3: Manejo de archivos
+
+```bash
+rm historia.txt
+rm --recursive -R Git
+mkdir class-git
+cd class-git
+touch README.md
+code .  # Crear README.md
+```
+
+### Commits:
+
+```bash
+git add .
 git commit -m "Cargamos el README dentro del directorio class-git"
-git status
-git log #Para ver los dos commits hechos: Si tienes commiteada alguna clase anterior veras mas commits de los que yo tengo.
-cd ..
-cd ..
+```
+
+## Clase 4: Edición con vim y commits
+
+```bash
+touch historia.txt
+code .
+# Editamos y guardamos
+```
+
+```bash
+git commit               # Abre vim
+ESC -> :wq! (guardar y salir)
+```
+
+## Clase 6: Reset y ramas
+
+```bash
+git commit -a           # Commit con edición en vim
+ESC + i (escribir)
+ESC + :wq! (guardar y salir)
+```
+
+```bash
+git reset --soft <hash>
+git reset --hard <hash>
+git diff
+```
+
+```bash
+git checkout <hash>     # Ver versión antigua
+git checkout master     # Volver a master
+```
+
+### Ramas
+
+```bash
+git branch cambios
+git checkout master
+git branch second tuNombre hotfix
+git branch -d cambios
+```
+
+## Clase 7: Git reset vs. rm
+
+```bash
+git reset --soft        # Borra historial pero guarda en staging
+git reset --hard        # Borra todo
+```
+
+```bash
+git rm --cached         # Elimina de staging, mantiene en disco
+git rm --force          # Elimina del disco y de Git
+```
+
+## Clase 8: Trabajo con servidor remoto
+
+```bash
+git clone <url>
+git push
+git fetch
+git merge
+git pull
+```
+
+### Logs avanzados
+
+```bash
+git log --oneline
+log --stat
+log --decorate
+log --graph --oneline --all
+```
+
+## Clase 9: Más sobre ramas
+
+```bash
+git branch nueva_rama
+git checkout nueva_rama
+git checkout -b nueva_rama
+```
+
+```bash
+git reset <hash>
+git checkout <hash>
+```
+
+## Clase 10: Merge de ramas
+
+```bash
+git checkout master
+git merge segunda
+```
+
+```bash
+git commit -am "Mensaje"
+```
+
+## Clase 11: SSH en Git
+
+```bash
+git config --global user.email "alumnos@mail.com"
+ssh-keygen -t rsa -b 4096 -C "alumnos@mail.com"
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_nombre
+```
+
+---
+
+> **Nota:** Este README resume las clases de Git y línea de comandos. Cada bloque de comandos debe practicarse en una terminal para afianzar conocimientos. Asegúrate de tener Git y una terminal correctamente configurada (Git Bash en Windows o Terminal en Linux/macOS).
+
+---
+
+*Repositorio educativo para el curso de Tecnicatura en programación. Realizado por Ariel Betancud y colaboradores.*
+
